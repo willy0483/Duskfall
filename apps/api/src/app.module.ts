@@ -8,6 +8,7 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
     }),
+    ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
     UserModule,
     AuthModule,

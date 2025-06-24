@@ -8,13 +8,20 @@ type User {
   email: String!
 }
 
+type AuthPayload {
+  id: Int!
+  name: String!
+  accessToken: String!
+  refreshToken: String!
+}
+
 type Query {
   hello: String!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
-  signIn(signInInput: SignInInput!): String!
+  signIn(signInInput: SignInInput!): AuthPayload!
 }
 
 input CreateUserInput {
